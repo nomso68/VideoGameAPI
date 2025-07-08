@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 //using System.Web.Http.Cors;
 using VideoGameAPI.Controllers.Data;
 using Microsoft.AspNetCore.Cors;
+using VideoGameAPI.Models;
 namespace VideoGameAPI.Controllers
 {
     [EnableCors("AllowSpecificOrigin")]
@@ -17,7 +18,11 @@ namespace VideoGameAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<VideoGame>>> GetVideoGames()
         {
-            return Ok(await _context.VideoGames.ToListAsync());
+            return Ok(await _context.VideoGames
+                .Include(g => g.VideoGameDetails)
+                .Include(g => g.Developer)
+                .Include(g => g.Publisher)
+                .ToListAsync());
         }
 
         [HttpGet("{id}")]
