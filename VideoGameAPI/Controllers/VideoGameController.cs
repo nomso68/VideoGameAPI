@@ -1,8 +1,5 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-//using System.Web.Http.Cors;
 using VideoGameAPI.Controllers.Data;
 using Microsoft.AspNetCore.Cors;
 using VideoGameAPI.Models;
@@ -22,6 +19,7 @@ namespace VideoGameAPI.Controllers
                 .Include(g => g.VideoGameDetails)
                 .Include(g => g.Developer)
                 .Include(g => g.Publisher)
+                .Include(g => g.Genres)
                 .ToListAsync());
         }
 

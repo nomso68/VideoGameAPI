@@ -12,4 +12,6 @@ public class VideoGame
     public int? PublisherId { get; set;}
     public Publisher? Publisher { get; set; }
     public VideoGameDetails? VideoGameDetails { get; set; }
+    public List<Genre>? Genres { get; set; }
+
 }
